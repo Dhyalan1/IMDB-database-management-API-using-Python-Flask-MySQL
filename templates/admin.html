@@ -1,0 +1,62 @@
+<html>
+	<head>
+		<title>IMDB ADMIN</title>
+		<link rel="stylesheet" href="{{url_for('static',filename='style.css')}}">
+		  <link rel="icon" type="image/x-icon" href="fav.png">
+
+	</head>
+	<body>
+		<h1>ADMIN SIDE OF IMDB MOVIE DATABASE</h1>
+
+		<h4>
+			{% with messages = get_flashed_messages() %}
+				{% if messages %}
+					{% for message in messages %}
+						{{ message }}
+					{% endfor %}
+				{% endif %}
+			{% endwith %}
+		</h4>
+
+
+		<div >
+			<a class="abc" href="{{url_for('addUsers')}}">ADD DATA</a>
+		</div>
+		<div id="search">
+			<form class="form" method="GET" action="/search">
+        	<input id="sea" type="text" name="query" placeholder="Search the genre (EX: Adventure)">
+        	<input id="sub" type="submit" value="Search">
+    		</form>
+		</div>
+
+		<table>
+			<tr>
+				<th>ID</th>
+				<th>MOVIE_NAME</th>
+				<th>IMDB_SCORE</th>
+				<th>DIRECTOR</th>
+                <th>GENRE</th>
+                <th>POPULARITY</th>
+				<th>UPDATE</th>
+				<th>DELETE</th>
+			</tr>
+			{% for data in datas %}
+				<tr>
+					<td>{{data.ID}}</td>
+					<td>{{data.MOVIE_NAME}}</td>
+					<td>{{data.IMDB_SCORE}}</td>
+					<td>{{data.DIRECTOR}}</td>
+					<td>{{data.GENRE}}</td>
+					<td>{{data.POPULARITY}}</td>
+					<td><a class = "a" href="{{url_for('editUser',id=data.ID)}}">Update</a></td>
+					<td><a class = "ab" onclick="return confirm('Are you sure to delete?');" href="{{url_for('delete',id=data.ID)}}">Delete</a></td>
+				</tr>
+			{% endfor %}
+		</table>
+		<FOOTER>
+	<div class="footer">
+  <p>Created by Dhyalan ||| Mail-id: dhyalan1502@gmail.com</p>
+</div>
+			</FOOTER>
+	</body>
+</html>

@@ -1,0 +1,26 @@
+<html>
+	<head>
+		<title>UPDATE DATA</title>
+		<link rel="stylesheet" href="{{url_for('static',filename='style.css')}}">
+	</head>
+	<body>
+	<h1>UPDATE IMDB DATA</h1>
+		<form action='' method='post'>
+			<label>Movie Name:</label>
+			<input type="text" name="movie_name" value="{{datas.MOVIE_NAME}}"   required>
+			<label>IMDB Score:</label>
+			<input type="text" name="imdb_score" value="{{datas.IMDB_SCORE}}"  required>
+			<label>Director:</label>
+			<input type="text" name="director" value="{{datas.DIRECTOR}}"  required>
+			<label>Genre:</label>
+			<input type="text" name="genre" value="{{datas.GENRE}}"  required>
+			<label>Popularity:</label>
+			<input type="number" name="popularity" value="{{datas.POPULARITY}}" required>
+			<input type='submit' value='Update Details'>
+		</form>
+	<div class="footer">
+  <p>Created by Dhyalan ||| Mail-id: dhyalan1502@gmail.com</p>
+	</div>
+
+	</body>
+</html>

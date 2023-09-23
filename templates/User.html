@@ -1,0 +1,54 @@
+<html>
+	<head>
+		<title>IMDB USER</title>
+		<link rel="stylesheet" href="{{url_for('static',filename='style.css')}}">
+		<link rel="icon" type="image/x-icon" href="fav.png">
+
+	</head>
+	<body>
+		<h1>IMDB MOVIES </h1>
+
+		<h4>
+			{% with messages = get_flashed_messages() %}
+				{% if messages %}
+					{% for message in messages %}
+						{{ message }}
+					{% endfor %}
+				{% endif %}
+			{% endwith %}
+		</h4>
+
+		<div id="search">
+			<form class="form" method="GET" action="/search">
+        	<input id="sea" type="text" name="query" placeholder="Search the genre (EX: Adventure)">
+        	<input id="sub" type="submit" value="Search">
+    		</form>
+		</div>
+
+		<table>
+			<tr>
+				<th>ID</th>
+				<th>MOVIE_NAME</th>
+				<th>IMDB_SCORE</th>
+				<th>DIRECTOR</th>
+                <th>GENRE</th>
+                <th>POPULARITY</th>
+			</tr>
+			{% for data in datas %}
+				<tr>
+					<td>{{data.ID}}</td>
+					<td>{{data.MOVIE_NAME}}</td>
+					<td>{{data.IMDB_SCORE}}</td>
+					<td>{{data.DIRECTOR}}</td>
+					<td>{{data.GENRE}}</td>
+					<td>{{data.POPULARITY}}</td>
+				</tr>
+			{% endfor %}
+		</table>
+		<FOOTER>
+	<div class="footer">
+  <p>Created by Dhyalan ||| Mail-id: dhyalan1502@gmail.com</p>
+	</div>
+</FOOTER>
+	</body>
+</html>
